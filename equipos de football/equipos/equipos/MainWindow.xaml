@@ -1,0 +1,52 @@
+﻿<Window x:Class="equipos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:equipos"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Botón para seleccionar el archivo -->
+        <Button Content="Seleccionar Archivo" Grid.Column="0" Grid.Row="0" Width="200" Height="30" Margin="10" Click="SelectFile_Click"/>
+
+        <!-- Botón para cargar los datos del archivo -->
+        <Button Content="Cargar Datos" Grid.Column="1" Grid.Row="0" Width="100" Height="30" Margin="10,0,0,0" Click="LoadData_Click"/>
+
+        <!-- ListBox para mostrar los juegos -->
+        <ListBox x:Name="lbJuego" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Eq1}"/>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Puntaje1}"/>
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding Puntaje2}"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Eq2}"/>
+                        <ProgressBar Grid.Column="4" Minimum="0" Maximum="100" Value="{Binding Progreso}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Botón para mostrar más información del juego seleccionado -->
+        <Button Content="MAS INFORMACION" Grid.Column="1" Grid.Row="2" Width="100" Height="50" Margin="0,10,10,10" Click="Button_Click"/>
+    </Grid>
+</Window>
